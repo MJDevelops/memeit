@@ -8,15 +8,15 @@ const Main = () => {
 
   useEffect(() => {
     const fetchMemes = async () => {
-      const memes = await fetch('https://meme-api.com/gimme/8');
+      const memes = await fetch('https://meme-api.com/gimme/dankmemes/8');
       const memesJSON = await memes.json();
 
-      setMemes(memesJSON['memes'].map((meme, index) => {
-        return {id: index, memeURL: meme.url};
-      }));
+      return memesJSON['memes'].map((meme, index) => (
+        { id: index, memeURL: meme.url }
+      ));
     };
 
-    fetchMemes();
+    fetchMemes().then((arr) => setMemes(arr));
   }, []);
 
   return (
@@ -29,6 +29,8 @@ const Main = () => {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 `;
 
 export default Main;
