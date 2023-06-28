@@ -5,7 +5,9 @@ const MemeCard = ({ image }) => {
   return (
     <CardWrapper>
       <img style={{width: '100%', height: '100%'}} src={image} />
-      <LayerEffect />
+      <LayerEffect>
+        <button>Choose</button>
+      </LayerEffect>
     </CardWrapper>
   );
 };
@@ -30,12 +32,25 @@ const LayerEffect = styled.div`
   justify-content: center;
   align-items: center;
 
+  button {
+    display: none;
+  }
+
   &:hover {
     background-color: rgba(0, 0, 0, 0.5);
 
-    &::before {
+    > button {
+      display: flex;
       color: white;
-      content: "Choose";
+      border-radius: 5px;
+      padding: 10px 20px;
+      border: 2px solid white;
+      background-color: transparent;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
     }
   }
 `;
