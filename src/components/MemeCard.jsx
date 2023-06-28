@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const MemeCard = ({ image }) => {
   return (
     <CardWrapper>
-      <img style={{width: '100%', height: '100%'}} src={image} />
+      <img style={{ width: "100%", height: "100%" }} src={image} />
       <LayerEffect>
         <button>Choose</button>
       </LayerEffect>
@@ -41,15 +41,41 @@ const LayerEffect = styled.div`
 
     > button {
       display: flex;
-      color: white;
-      border-radius: 5px;
-      padding: 10px 20px;
-      border: 2px solid white;
-      background-color: transparent;
+      padding: 15px 25px;
+      border: unset;
+      border-radius: 15px;
+      color: #e8e8e8;
+      z-index: 1;
+      background: #212121;
+      position: relative;
+      font-weight: 1000;
+      font-size: 17px;
+      -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+      box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+      transition: all 250ms;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 15px;
+        background-color: #e8e8e8;
+        z-index: -1;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(255, 255, 255, 0.27);
+        box-shadow: 4px 8px 19px -3px rgba(255, 255, 255, 0.27);
+        transition: all 250ms
+      }
 
       &:hover {
-        background-color: white;
-        color: black;
+        color: #212121;
+      }
+
+      &:hover::before {
+        width: 100%;
       }
     }
   }
