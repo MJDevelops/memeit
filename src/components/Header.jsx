@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-function Header() {
+const Header = () => {
   return (
     <HeaderWrapper>
       <h1>MemeIt</h1>
@@ -9,8 +9,6 @@ function Header() {
 }
 
 const HeaderWrapper = styled.div`    
-  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;900&display=swap');
-
   display: flex;
   align-items: center;
   justify-content: center;

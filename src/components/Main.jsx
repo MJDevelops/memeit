@@ -1,39 +1,34 @@
 import styled from 'styled-components';
+import CardGrid from './CardGrid';
+import { useState, useEffect } from 'react';
 
-function Main() {
+const Main = () => {
+  const [memes, setMemes] = useState([]);
+/*   const [clickedMemes, setClickedMemes] = useState([]); */
+
+  useEffect(() => {
+    const fetchMemes = async () => {
+      const memes = await fetch('https://meme-api.com/gimme/8');
+      const memesJSON = await memes.json();
+
+      setMemes(memesJSON['memes'].map((meme, index) => {
+        return {id: index, memeURL: meme.url};
+      }));
+    };
+
+    fetchMemes();
+  }, []);
+
   return (
     <MainWrapper>
-      {data.map((item, index) => <CardWrapper key={index}>{item.text}</CardWrapper>)}
+      <CardGrid images={memes}/>
     </MainWrapper>
   );
 }
 
 const MainWrapper = styled.div`
-  display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-`;
-
-const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  background-color: gray;
-  align-items: center;
-  justify-content: center;
 `;
-
-const data = [
-  {text: 'Text 1'},
-  {text: 'Text 2'},
-  {text: 'Text 3'},
-  {text: 'Text 4'},
-  {text: 'Text 5'},
-  {text: 'Text 6'},
-  {text: 'Text 7'},
-  {text: 'Text 8'}
-];
 
 export default Main;

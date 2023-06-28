@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import githubLogo from '../assets/github-mark.svg';
 
-function Footer() {
+const Footer = () => {
   return (  
     <FooterWrapper>
-      <GithubImg src={githubLogo} alt="Github Logo" />
       <p>&#169; MJP</p> 
+      <a href="https://github.com/MJProgramming">
+        <GithubImg src={githubLogo} alt="Github Logo" />
+      </a>
     </FooterWrapper>
   );
 }

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Main from './components/Main';
 import GlobalStyle from './globalStyles';
 
-function App() {
+const App = () => {
   return (
     <AppWrapper>
       <GlobalStyle />
