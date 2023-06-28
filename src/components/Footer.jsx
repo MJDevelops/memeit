@@ -3,12 +3,12 @@ import githubLogo from '../assets/github-mark.svg';
 
 const Footer = () => {
   return (  
-    <FooterWrapper>
+    <StyledFooter>
       <p>&#169; MJP</p> 
       <a href="https://github.com/MJProgramming/memeit">
         <GithubImg src={githubLogo} alt="Github Logo" />
       </a>
-    </FooterWrapper>
+    </StyledFooter>
   );
 }
 
@@ -17,7 +17,7 @@ const GithubImg = styled.img`
   height: auto;
 `;
 
-const FooterWrapper = styled.div`
+const StyledFooter = styled.div`
   display: flex;
   gap: 10px;
   margin-top: auto;

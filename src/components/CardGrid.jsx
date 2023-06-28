@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const CardGrid = ({ clickedMemesArr, memesArr, handleClickedMeme }) => {
   return (
-    <CardGridWrapper>
+    <StyledCardGrid>
       {memesArr.map((img) => (
         <MemeCard
           key={img.id}
@@ -13,11 +13,11 @@ const CardGrid = ({ clickedMemesArr, memesArr, handleClickedMeme }) => {
           handleClickedMeme={handleClickedMeme}
         />
       ))}
-    </CardGridWrapper>
+    </StyledCardGrid>
   );
 };
 
-const CardGridWrapper = styled.div`
+const StyledCardGrid = styled.div`
   display: grid;
   width: 100%;
   height: 100%;

@@ -25,17 +25,17 @@ const Main = () => {
   }, [memes, clickedMemes]);
 
   return (
-    <MainWrapper>
+    <StyledMain>
       <CardGrid
         clickedMemesArr={clickedMemes}
         memesArr={memes}
         handleClickedMeme={setClickedMemes}
       />
-    </MainWrapper>
+    </StyledMain>
   );
 }
 
-const MainWrapper = styled.div`
+const StyledMain = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;

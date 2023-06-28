@@ -7,16 +7,16 @@ const MemeCard = ({ imageArr, image, handleClickedMeme }) => {
   };
 
   return (
-    <CardWrapper>
+    <StyledCard>
       <img style={{ width: "100%", height: "100%" }} src={image.memeURL} />
       <LayerEffect>
         <button onClick={addClickedMeme}>Choose</button>
       </LayerEffect>
-    </CardWrapper>
+    </StyledCard>
   );
 };
 
-const CardWrapper = styled.div`
+const StyledCard = styled.div`
   display: flex;
   position: relative;
   width: 60%;

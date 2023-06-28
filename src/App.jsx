@@ -6,16 +6,16 @@ import GlobalStyle from './globalStyles';
 
 const App = () => {
   return (
-    <AppWrapper>
+    <StyledApp>
       <GlobalStyle />
       <Header />
       <Main />
       <Footer />
-    </AppWrapper>
+    </StyledApp>
   );
 }
 
-const AppWrapper = styled.div`
+const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;

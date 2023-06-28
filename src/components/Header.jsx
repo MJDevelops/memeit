@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 const Header = () => {
   return (
-    <HeaderWrapper>
+    <StyledHeader>
       <h1>MemeIt</h1>
       <h4 style={{marginTop: '-10px'}}>A memory card game using memes, built with React</h4>
-    </HeaderWrapper>
+    </StyledHeader>
   );
 }
 
-const HeaderWrapper = styled.div`    
+const StyledHeader = styled.div`    
   display: flex;
   flex-direction: column;
   align-items: center;
