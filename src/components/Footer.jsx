@@ -5,7 +5,7 @@ const Footer = () => {
   return (  
     <FooterWrapper>
       <p>&#169; MJP</p> 
-      <a href="https://github.com/MJProgramming">
+      <a href="https://github.com/MJProgramming/memeit">
         <GithubImg src={githubLogo} alt="Github Logo" />
       </a>
     </FooterWrapper>
