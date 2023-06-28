@@ -4,12 +4,14 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <h1>MemeIt</h1>
+      <h4 style={{marginTop: '-10px'}}>A memory card game using memes, built with React</h4>
     </HeaderWrapper>
   );
 }
 
 const HeaderWrapper = styled.div`    
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100vw;
