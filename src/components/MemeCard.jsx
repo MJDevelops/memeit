@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const MemeCard = ({ image }) => {
+const MemeCard = ({ imageArr, image, handleClickedMeme }) => {
+  const addClickedMeme = () => {
+    handleClickedMeme([...imageArr, image.id]);
+  };
+
   return (
     <CardWrapper>
-      <img style={{ width: "100%", height: "100%" }} src={image} />
+      <img style={{ width: "100%", height: "100%" }} src={image.memeURL} />
       <LayerEffect>
-        <button>Choose</button>
+        <button onClick={addClickedMeme}>Choose</button>
       </LayerEffect>
     </CardWrapper>
   );
@@ -83,7 +87,9 @@ const LayerEffect = styled.div`
 
 MemeCard.propTypes = {
   children: PropTypes.any,
-  image: PropTypes.string,
+  image: PropTypes.object,
+  imageArr: PropTypes.array,
+  handleClickedMeme: PropTypes.func
 };
 
 export default MemeCard;

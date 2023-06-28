@@ -2,11 +2,16 @@ import MemeCard from './MemeCard';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const CardGrid = ({ images }) => {
+const CardGrid = ({ clickedMemesArr, memesArr, handleClickedMeme }) => {
   return (
     <CardGridWrapper>
-      {images.map((img) => (
-        <MemeCard key={img.id} image={img.memeURL} />
+      {memesArr.map((img) => (
+        <MemeCard
+          key={img.id}
+          imageArr={clickedMemesArr}
+          image={img}
+          handleClickedMeme={handleClickedMeme}
+        />
       ))}
     </CardGridWrapper>
   );
@@ -25,7 +30,9 @@ const CardGridWrapper = styled.div`
 
 CardGrid.propTypes = {
   children: PropTypes.any,
-  images: PropTypes.array
+  memesArr: PropTypes.array,
+  handleClickedMeme: PropTypes.func,
+  clickedMemesArr: PropTypes.array,
 };
 
 export default CardGrid;

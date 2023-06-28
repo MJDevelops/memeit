@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import CardGrid from './CardGrid';
+import { shuffleArray } from '../utils';
 import { useState, useEffect } from 'react';
 
 const Main = () => {
   const [memes, setMemes] = useState([]);
-/*   const [clickedMemes, setClickedMemes] = useState([]); */
+  const [clickedMemes, setClickedMemes] = useState([]);
 
   useEffect(() => {
     const fetchMemes = async () => {
@@ -19,9 +20,17 @@ const Main = () => {
     fetchMemes().then((arr) => setMemes(arr));
   }, []);
 
+  useEffect(() => {
+    setMemes(shuffleArray(memes));
+  }, [memes, clickedMemes]);
+
   return (
     <MainWrapper>
-      <CardGrid images={memes}/>
+      <CardGrid
+        clickedMemesArr={clickedMemes}
+        memesArr={memes}
+        handleClickedMeme={setClickedMemes}
+      />
     </MainWrapper>
   );
 }
