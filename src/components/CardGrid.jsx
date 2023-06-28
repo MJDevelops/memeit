@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const CardGrid = ({ images }) => {
   return (
     <CardGridWrapper>
-      {images.map((img, index) => (
-        <MemeCard key={index} image={img.memeURL} />
+      {images.map((img) => (
+        <MemeCard key={img.id} image={img.memeURL} />
       ))}
     </CardGridWrapper>
   );
