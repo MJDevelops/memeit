@@ -55,7 +55,7 @@ Error generating stack: `+o.message+`
   width: 100vw;
   font-family: 'Bitter', serif;
   font-weight: 900;
-`,xm="/assets/github-mark-7a0dd11e.svg",Cm=()=>F.jsxs(_m,{children:[F.jsx("p",{children:"© MJP"}),F.jsx("a",{href:"https://github.com/MJProgramming/memeit",children:F.jsx(Em,{src:xm,alt:"Github Logo"})})]}),Em=nt.img`
+`,xm="/memeit/assets/github-mark-7a0dd11e.svg",Cm=()=>F.jsxs(_m,{children:[F.jsx("p",{children:"© MJP"}),F.jsx("a",{href:"https://github.com/MJProgramming/memeit",children:F.jsx(Em,{src:xm,alt:"Github Logo"})})]}),Em=nt.img`
   width: 30px;
   height: auto;
 `,_m=nt.div`
