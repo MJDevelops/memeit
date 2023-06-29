@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import CardGrid from './CardGrid';
 import GameOver from './GameOver';
+import Score from './Score';
 import { shuffleArray } from '../utils';
 import { useState, useEffect } from 'react';
 
@@ -8,6 +9,8 @@ const Main = () => {
   const [memes, setMemes] = useState([]);
   const [clickedMemes, setClickedMemes] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [score, setScore] = useState(0);
+  const [highScore, setHighscore] = useState(0);
 
   const resetMemes = () => {
     setMemes([]);
@@ -44,18 +47,30 @@ const Main = () => {
 
   useEffect(() => {
     setMemes(shuffleArray(memes));
-  }, [memes, clickedMemes]);
+    setScore(clickedMemes.length);
+
+    if (score > highScore) {
+      setHighscore(score);
+    }
+  }, [clickedMemes, score]);
 
   return (
     <StyledMain>
       {
         isGameOver 
         ? <GameOver handleGameOver={setIsGameOver} /> 
-        : <CardGrid
+        : 
+        <> 
+          <Score
+            currentScore={score}
+            highScore={highScore}
+          />
+          <CardGrid
             clickedMemesArr={clickedMemes}
             memesArr={memes}
             handleClickedMeme={handleClickedMeme}
-        />
+          />
+        </>
       }
     </StyledMain>
   );

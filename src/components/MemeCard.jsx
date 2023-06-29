@@ -1,8 +1,7 @@
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const MemeCard = ({image, handleClickedMeme }) => {
-  
+const MemeCard = ({ image, handleClickedMeme }) => {
   const addClickedMeme = () => {
     handleClickedMeme(image.id);
   };
