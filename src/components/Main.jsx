@@ -58,9 +58,8 @@ const Main = () => {
   }, [memes, isRoundOver]);
 
   useEffect(() => {
+    setMemes(shuffleArray(memes));
     if (memes.length !== 0) {
-      setMemes(shuffleArray(memes));
-      
       if (clickedMemes.length === memes.length) {
         resetMemes();
         resetClickedMemes();
@@ -73,7 +72,7 @@ const Main = () => {
       }
     }
     
-  }, [clickedMemes, score]);
+  }, [memes, clickedMemes, score]);
 
   return (
     <StyledMain>
