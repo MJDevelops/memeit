@@ -19,11 +19,13 @@ const MemeCard = ({ image, handleClickedMeme }) => {
 const StyledCard = styled.div`
   display: flex;
   position: relative;
-  width: 60%;
-  height: 60%;
+  width: 50%;
+  height: 50%;
   flex-direction: column;
-  border: 2px solid black;
-  background-color: gray;
+  border-radius: 0px;
+  background: #454545;
+  box-shadow:  7px 7px 14px #1c1c1c,
+              -7px -7px 14px #6e6e6e;
   align-items: center;
   justify-content: center;
 `;

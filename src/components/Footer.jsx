@@ -24,7 +24,6 @@ const StyledFooter = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  border: 2px solid black;
 `;
 
 export default Footer;

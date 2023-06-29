@@ -15,7 +15,6 @@ const StyledHeader = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  border-bottom: 1px solid black;
   font-family: 'Bitter', serif;
   font-weight: 900;
 `;

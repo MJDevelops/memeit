@@ -18,13 +18,15 @@ const CardGrid = ({ memesArr, handleClickedMeme }) => {
 
 const StyledCardGrid = styled.div`
   display: grid;
-  width: 100%;
+  align-self: center;
+  justify-self: center;
+  width: 80%;
   height: 100%;
   align-items: center;
   justify-items: center;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
-  border: 1px solid black;
+  overflow: hidden;
 `;
 
 CardGrid.propTypes = {
