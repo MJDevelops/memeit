@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const MemeCard = ({ imageArr, image, handleClickedMeme }) => {
+const MemeCard = ({image, handleClickedMeme }) => {
+  
   const addClickedMeme = () => {
-    handleClickedMeme([...imageArr, image.id]);
+    handleClickedMeme(image.id);
   };
 
   return (

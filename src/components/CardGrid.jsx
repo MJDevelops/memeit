@@ -2,13 +2,12 @@ import MemeCard from './MemeCard';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const CardGrid = ({ clickedMemesArr, memesArr, handleClickedMeme }) => {
+const CardGrid = ({ memesArr, handleClickedMeme }) => {
   return (
     <StyledCardGrid>
       {memesArr.map((img) => (
         <MemeCard
           key={img.id}
-          imageArr={clickedMemesArr}
           image={img}
           handleClickedMeme={handleClickedMeme}
         />
