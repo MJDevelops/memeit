@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { useStore } from "../store";
 
 const Score = () => {
@@ -32,11 +31,5 @@ const ScoreWrapper = styled.div`
   background: #c7c7c7;
   box-shadow: 17px 17px 33px #505050, -17px -17px 33px #ffffff;
 `;
-
-Score.propTypes = {
-  children: PropTypes.any,
-  currentScore: PropTypes.number,
-  highScore: PropTypes.number,
-};
 
 export default Score;

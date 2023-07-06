@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { useStore } from "../store";
 
 const RoundWon = () => {
@@ -22,9 +21,5 @@ const StyledRoundWon = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-RoundWon.propTypes = {
-  children: PropTypes.any,
-};
 
 export default RoundWon;

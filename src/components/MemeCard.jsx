@@ -103,8 +103,6 @@ const LayerEffect = styled.div`
 MemeCard.propTypes = {
   children: PropTypes.any,
   image: PropTypes.object,
-  imageArr: PropTypes.array,
-  handleClickedMeme: PropTypes.func,
 };
 
 export default MemeCard;

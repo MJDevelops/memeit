@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { useStore } from "../store";
 
 const GameOver = () => {
@@ -21,10 +20,5 @@ const StyledGameOver = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-GameOver.propTypes = {
-  children: PropTypes.any,
-  handleGameOver: PropTypes.func,
-};
 
 export default GameOver;
