@@ -1,14 +1,17 @@
-import styled from 'styled-components';
-import PropTypes from 'prop-types'
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useStore } from "../store";
 
-const GameOver = ({ handleGameOver }) => {
+const GameOver = () => {
+  const setNewGame = useStore((state) => state.setNewGame);
+
   return (
     <StyledGameOver>
       <h1>Game over! You clicked the same meme twice.</h1>
-      <button onClick={() => handleGameOver(false)}>Retry</button>
+      <button onClick={setNewGame}>Retry</button>
     </StyledGameOver>
-  )
-}
+  );
+};
 
 const StyledGameOver = styled.div`
   display: flex;
@@ -22,6 +25,6 @@ const StyledGameOver = styled.div`
 GameOver.propTypes = {
   children: PropTypes.any,
   handleGameOver: PropTypes.func,
-}
+};
 
 export default GameOver;

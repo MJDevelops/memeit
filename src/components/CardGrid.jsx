@@ -1,16 +1,25 @@
-import MemeCard from './MemeCard';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import MemeCard from "./MemeCard";
+import styled from "styled-components";
+import { useStore } from "../store";
+import { useEffect } from "react";
 
-const CardGrid = ({ memesArr, handleClickedMeme }) => {
+const CardGrid = () => {
+  const memes = useStore((state) => state.memes);
+  const fetchMemes = useStore((state) => state.fetchMemes);
+  const resetMemes = useStore((state) => state.resetMemes);
+
+  useEffect(() => {
+    fetchMemes();
+
+    return () => {
+      resetMemes();
+    };
+  }, []);
+
   return (
     <StyledCardGrid>
-      {memesArr.map((img) => (
-        <MemeCard
-          key={img.id}
-          image={img}
-          handleClickedMeme={handleClickedMeme}
-        />
+      {memes.map((img) => (
+        <MemeCard key={img.id} image={img} />
       ))}
     </StyledCardGrid>
   );
@@ -29,12 +38,5 @@ const StyledCardGrid = styled.div`
   justify-content: center;
   overflow: hidden;
 `;
-
-CardGrid.propTypes = {
-  children: PropTypes.any,
-  memesArr: PropTypes.array,
-  handleClickedMeme: PropTypes.func,
-  clickedMemesArr: PropTypes.array,
-};
 
 export default CardGrid;

@@ -1,7 +1,11 @@
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useStore } from "../store";
 
-const Score = ({ currentScore, highScore }) => {
+const Score = () => {
+  const currentScore = useStore((state) => state.score);
+  const highScore = useStore((state) => state.highScore);
+
   return (
     <StyledScore>
       <ScoreWrapper>
@@ -26,14 +30,13 @@ const ScoreWrapper = styled.div`
   padding: 10px;
   border-radius: 23px;
   background: #c7c7c7;
-  box-shadow:  17px 17px 33px #505050,
-             -17px -17px 33px #ffffff;
+  box-shadow: 17px 17px 33px #505050, -17px -17px 33px #ffffff;
 `;
 
 Score.propTypes = {
   children: PropTypes.any,
   currentScore: PropTypes.number,
-  highScore: PropTypes.number
-}
+  highScore: PropTypes.number,
+};
 
 export default Score;

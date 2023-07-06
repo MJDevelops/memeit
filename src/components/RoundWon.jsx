@@ -1,12 +1,15 @@
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useStore } from "../store";
 
+const RoundWon = () => {
+  const nextRound = useStore((state) => state.setNextRound);
+  const round = useStore((state) => state.currentRound);
 
-const RoundWon = ({ round, handleSetRound }) => {
   return (
     <StyledRoundWon>
       <p>You won Round {round}!</p>
-      <button onClick={handleSetRound}>Next Round</button>
+      <button onClick={nextRound}>Next Round</button>
     </StyledRoundWon>
   );
 };
@@ -22,8 +25,6 @@ const StyledRoundWon = styled.div`
 
 RoundWon.propTypes = {
   children: PropTypes.any,
-  round: PropTypes.number,
-  handleSetRound: PropTypes.func,
 };
 
 export default RoundWon;

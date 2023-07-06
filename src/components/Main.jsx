@@ -1,102 +1,53 @@
-import styled from 'styled-components';
-import CardGrid from './CardGrid';
-import GameOver from './GameOver';
-import Score from './Score';
-import RoundWon from './RoundWon';
-import { shuffleArray } from '../utils';
-import { useState, useEffect } from 'react';
+import styled from "styled-components";
+import CardGrid from "./CardGrid";
+import GameOver from "./GameOver";
+import Score from "./Score";
+import RoundWon from "./RoundWon";
+import { shuffleArray } from "../utils";
+import { useEffect } from "react";
+import { useStore } from "../store";
 
 const Main = () => {
-  const [memes, setMemes] = useState([]);
-  const [clickedMemes, setClickedMemes] = useState([]);
-  const [isRoundOver, setIsRoundOver] = useState(false);
-  const [score, setScore] = useState(0);
-  const [highScore, setHighscore] = useState(0);
-  const [round, setRound] = useState(1);
-  const [roundWon, setRoundWon] = useState(false);
-
-  const resetMemes = () => {
-    setMemes([]);
-  };
-
-  const resetClickedMemes = () => {
-    setClickedMemes([]);
-  };
-
-  const handleClickedMeme = (id) => {
-    if (clickedMemes.includes(id)) {
-      resetMemes();
-      resetClickedMemes();
-      setIsRoundOver(true);
-      setRound(1);
-      setScore(0);
-    } else {
-      setClickedMemes([...clickedMemes, id]);
-      setScore(score + 1);
-    }
-  };
-
-  const handleSetRound = () => {
-    setRound(round + 1);
-    setIsRoundOver(false);
-    setRoundWon(false);
-  }
+  const clickedMemes = useStore((state) => state.clickedMemes);
+  const highScore = useStore((state) => state.highScore);
+  const score = useStore((state) => state.score);
+  const memes = useStore((state) => state.memes);
+  const setMemes = useStore((state) => state.setMemes);
+  const handleRoundWon = useStore((state) => state.handleRoundWon);
+  const setHighscore = useStore((state) => state.setHighscore);
+  const isRoundOver = useStore((state) => state.isRoundOver);
+  const roundWon = useStore((state) => state.isRoundWon);
 
   useEffect(() => {
-    if (memes.length === 0 && !isRoundOver) {
-      const fetchMemes = async () => {
-        const memes = await fetch(`https://meme-api.com/gimme/dankmemes/${7 + round}`);
-        const memesJSON = await memes.json();
-
-        return memesJSON['memes'].map((meme, index) => (
-          { id: index, memeURL: meme.url }
-        ));
-      };
-
-      fetchMemes().then((arr) => setMemes(arr));
-    }
-  }, [memes, isRoundOver]);
-
-  useEffect(() => {
-    setMemes(shuffleArray(memes));
     if (memes.length !== 0) {
+      setMemes(shuffleArray(memes));
       if (clickedMemes.length === memes.length) {
-        resetMemes();
-        resetClickedMemes();
-        setIsRoundOver(true);
-        setRoundWon(true);
+        handleRoundWon();
       }
-      
+
       if (score > highScore) {
         setHighscore(score);
       }
     }
-    
-  }, [memes, clickedMemes, score]);
+  }, [memes, clickedMemes]);
 
   return (
     <StyledMain>
-      {
-        isRoundOver 
-        ? roundWon
-          ? <RoundWon round={round} handleSetRound={handleSetRound} />
-          : <GameOver handleGameOver={setIsRoundOver} />
-        : 
-        <> 
-          <Score
-            currentScore={score}
-            highScore={highScore}
-          />
-          <CardGrid
-            clickedMemesArr={clickedMemes}
-            memesArr={memes}
-            handleClickedMeme={handleClickedMeme}
-          />
+      {isRoundOver ? (
+        roundWon ? (
+          <RoundWon />
+        ) : (
+          <GameOver />
+        )
+      ) : (
+        <>
+          <Score />
+          <CardGrid />
         </>
-      }
+      )}
     </StyledMain>
   );
-}
+};
 
 const StyledMain = styled.div`
   display: flex;
